@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-ripple-dark-pink">
+  <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -18,14 +18,4 @@ export default {
   props: ["title", "subtitle"]
 }
 </script>
-
-<style>
-.hero.is-ripple-dark-pink {
-  color: #FFF;
-  background: #E83386;
-}
-.hero.is-ripple-dark-pink .subtitle, .hero.is-ripple-dark-pink .title {
-  color: #FFF;
-}
-</style>
 

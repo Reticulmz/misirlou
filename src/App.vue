@@ -71,21 +71,4 @@ function isUndefined(x) {
 }
 </script>
 
-<style src="bulma" lang="sass"></style>
-
-<style lang="sass">
-@import "~bulma/sass/utilities/variables.sass"
-@import "~bulma/sass/utilities/mixins.sass"
-
-.is-loading .navbar-link, .is-loading .navbar-link:after
-  color: transparent !important
-  pointer-events: none
-  border: 0
-
-.is-loading:not(.button):after
-  +loader
-  position: absolute
-  left: calc(50% - (1em / 2))
-  top: calc(50% - (1em / 2))
-  position: absolute !important
-</style>
+<style src="./assets/bulma.sass" lang="sass"></style>
