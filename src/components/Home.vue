@@ -10,6 +10,11 @@
           <h1 class="title">{{ tournament.name }}</h1>
           <h2 class="subtitle">{{ tournament.description }}</h2>
         </div>
+        <div
+          class="compact box has-text-centered"
+          v-if="tournament.exclusivity_starts">
+          Runs from {{ tournament.exclusivity_starts }} until (probably) {{ tournament.exclusivity_ends }} (YYYY/MM/DD).
+        </div>
         <a
           class="compact box red has-text-centered"
           v-if="tournament.status_data && tournament.status_data.twitch"
