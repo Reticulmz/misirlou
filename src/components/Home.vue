@@ -18,13 +18,16 @@
         </a>
         <div class="columns is-gapless buttonful">
           <div class="column">
-            <i class="osu-icon mode-mania"></i> osu! standard
+            <i class="osu-icon" :class="'mode-' + osu.modesShort[tournament.mode]"></i> {{ osu.modesReadable[tournament.mode] }}
           </div>
           <router-link class="column" :to="'/register/' + tournament.id">
             Register
           </router-link>
           <router-link class="column" :to="'/beatmaps/' + tournament.id">
             Request beatmaps
+          </router-link>
+          <router-link class="column" :to="'/teams/' + tournament.my_team" v-if="tournament.my_team">
+            Your team
           </router-link>
         </div>
       </div>
@@ -35,6 +38,7 @@
 <script>
 import BulmaHero from "./Hero"
 import backend from "../backend"
+import osu from "../osu"
 
 export default {
   name: "home",
@@ -43,7 +47,8 @@ export default {
   },
   data() {
     return {
-      tournaments: null
+      tournaments: null,
+      osu: osu
     }
   },
   computed: {
@@ -70,7 +75,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.mode-osu:before { content: '\e800' }
+.mode-std:before { content: '\e800' }
 .mode-taiko:before { content: '\e803' }
 .mode-ctb:before { content: '\e801' }
 .mode-mania:before { content: '\e802' }
