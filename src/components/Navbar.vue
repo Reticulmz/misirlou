@@ -53,7 +53,7 @@ export default {
       appTitle: process.env.APP_TITLE,
       burgerActive: false,
       locations: [
-        {
+        /*{
           title: "Register",
           location: "/register"
         },
@@ -64,7 +64,7 @@ export default {
         {
           title: "Brackets",
           location: "/brackets"
-        }
+        }*/
       ]
     }
   },
@@ -75,23 +75,6 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-@import "~bulma/sass/utilities/variables.sass"
-@import "~bulma/sass/utilities/mixins.sass"
-
-.navbar-item.is-loading .navbar-link, .navbar-item.is-loading .navbar-link:after
-  color: transparent !important
-  pointer-events: none
-  border: 0
-
-.navbar-item.is-loading:after
-  +loader
-  position: absolute
-  left: calc(50% - (1em / 2))
-  top: calc(50% - (1em / 2))
-  position: absolute !important
-</style>
 
 <style scoped>
 .avatar {
