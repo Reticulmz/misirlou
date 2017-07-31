@@ -66,6 +66,7 @@ import LoadingSect from "./LoadingSect"
 import backend from "../backend"
 import osu from "../osu"
 import marked from "marked"
+import loadUsernames from "../loadUsernames"
 
 export default {
   components: {
@@ -112,13 +113,7 @@ export default {
   mounted() {
     backend.misirlou.invites((invites) => {
       this.invites = invites.invites
-      var users = new Set()
-      invites.invites.forEach(x => users.add(x.captain))
-      backend.getUsersBulk([...users], data => {
-        data.users.forEach(x => this.names[x.id] = x.username)
-        // I dunno why I need to do this, but apparently I do.
-        this.$forceUpdate()
-      })
+      loadUsernames(invites.invites, i => i.captain, this)
     })
   }
 }
