@@ -3,6 +3,7 @@ import Router from "vue-router"
 import Home from "@/components/Home"
 import Register from "@/components/Register"
 import Invites from "@/components/Invites"
+import Feed from "@/components/Feed"
 import Logout from "@/components/Logout"
 
 Vue.use(Router)
@@ -24,6 +25,14 @@ export default new Router({
       component: Register,
       meta: {
         title: "Register"
+      }
+    },
+    {
+      path: "/feed/:id",
+      name: "Feed",
+      component: Feed,
+      meta: {
+        title: "Feed"
       }
     },
     {

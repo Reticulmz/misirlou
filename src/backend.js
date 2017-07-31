@@ -25,6 +25,9 @@ export default {
     inviteAct(teamID, action, callback, handleableErrors) {
       request(createMisirlouRequest("/invites/" + action, {id: teamID}), callback, handleableErrors)
     },
+    feedItems(tourn, callback) {
+      request(createMisirlouRequest("/feed/items", {tourn_id: tourn}), callback)
+    },
   },
   getUser(userID, callback) {
     request(createRippleRequest("/users", {id: userID}), callback)

@@ -3,6 +3,15 @@
 import Vue from "vue"
 import App from "./App"
 import router from "./router"
+import timeago from "vue-timeago"
+
+Vue.use(timeago, {
+  name: "timeago",
+  locale: "en-US",
+  locales: {
+    "en-US": require("vue-timeago/locales/en-US.json")
+  }
+})
 
 Vue.config.productionTip = false
 
