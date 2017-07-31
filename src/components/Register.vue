@@ -4,12 +4,7 @@
       title="Register"
       subtitle="So you think you're good enough for this tournament, heh?">
     </bulma-hero>
-    <section class="section" v-if="tournament === null">
-      <div class="box">
-        <h1 class="title">Loading tournament...</h1>
-        <h2 class="subtitle">If this takes a long time, it means there's either been an error or your connection sucks.</h2>
-      </div>
-    </section>
+    <loading-sect v-if="tournament === null"></loading-sect>
     <section class="section" v-else-if="tournament === 404">
       <div class="box">
         <h1 class="title">That tournament could not be found.</h1>
@@ -90,6 +85,7 @@
 <script>
 import BulmaHero from "./Hero"
 import RippleUser from "./RippleUser"
+import LoadingSect from "./LoadingSect"
 import marked from "marked"
 import backend from "../backend"
 import store from "../store"
@@ -102,7 +98,8 @@ marked.setOptions({
 export default {
   components: {
     BulmaHero,
-    RippleUser
+    RippleUser,
+    LoadingSect,
   },
   data() {
     return {

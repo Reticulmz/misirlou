@@ -25,6 +25,9 @@
           <div class="column">
             <i class="osu-icon" :class="'mode-' + osu.modesShort[tournament.mode]"></i> {{ osu.modesReadable[tournament.mode] }}
           </div>
+          <router-link class="column" :to="'/feed/' + tournament.id">
+            Feed
+          </router-link>
           <router-link class="column" :to="'/register/' + tournament.id">
             Register
           </router-link>

@@ -53,10 +53,11 @@ export default {
       appTitle: process.env.APP_TITLE,
       burgerActive: false,
       locations: [
-        /*{
-          title: "Register",
-          location: "/register"
+        {
+          title: "Invites",
+          location: "/invites",
         },
+        /*
         {
           title: "Request Beatmap",
           location: "/beatmaps"

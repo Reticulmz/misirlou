@@ -19,12 +19,23 @@ export default {
       req.data = data
       request(req, callback, handleableErrors)
     },
+    invites(callback) {
+      request(createMisirlouRequest("/invites", {}), callback)
+    },
+    inviteAct(teamID, action, callback, handleableErrors) {
+      request(createMisirlouRequest("/invites/" + action, {id: teamID}), callback, handleableErrors)
+    },
   },
   getUser(userID, callback) {
     request(createRippleRequest("/users", {id: userID}), callback)
   },
   getUserFullByUsername(username, callback, handle404) {
     request(createRippleRequest("/users/full", {name: username}), callback, handle404 ? [404] : false)
+  },
+  getUsersBulk(users, callback) {
+    let path = "/users?"
+    users.forEach(x => path += "iid=" + x + "&")
+    request(createRippleRequest(path, {}), callback)
   },
 }
 
