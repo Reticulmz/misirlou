@@ -105,7 +105,7 @@ export default {
         }
         this.invites.splice(index, 1)
         this.isError = false
-        this.message = "Invite accepted successfully."
+        this.message = "Invite " + (action == "accept" ? "accepted" : "refused") + " successfully."
       }, [403, 404, 413])
     },
   },
