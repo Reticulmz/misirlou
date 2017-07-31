@@ -7,7 +7,7 @@ import router from "./router"
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title + " | " + process.env.APP_TITLE
+  document.title = (to.meta.title ? to.meta.title + " | " : "") + process.env.APP_TITLE
   next()
 })
 

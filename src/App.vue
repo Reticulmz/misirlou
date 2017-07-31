@@ -45,7 +45,8 @@ var App = {
   },
   mounted() {
     if (window.location.pathname === "/store_tokens") {
-      storeTokens();
+      storeTokens()
+      window.location.pathname = "/"
     }
     if (App.computed.isLoggedIn()) {
       backend.getUser("self", user => {
@@ -62,8 +63,6 @@ function storeTokens() {
   if (isUndefined(p) || isUndefined(p.access) || isUndefined(p.session))
     return
   storage.storeTokens(p.session, p.access)
-  router.push("/")
-  this.$forceUpdate()
 }
 
 function isUndefined(x) {

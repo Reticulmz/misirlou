@@ -8,5 +8,8 @@ export default {
   storeTokens(session, access) {
     localStorage.setItem("session_token", session)
     localStorage.setItem("access_token", access)
+  },
+  clear() {
+    localStorage.clear()
   }
 }
