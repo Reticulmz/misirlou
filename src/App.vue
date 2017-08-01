@@ -9,7 +9,7 @@
         <div class="container has-text-centered">
           <a
             class="button is-large is-primary"
-            href="/api/oauth_flow_start"
+            :href="process.env.API_BASE_URL + '/api/oauth_flow_start'"
             :class="{ 'is-loading': buttonLoading }"
             @click="buttonLoading = true">Log in with Ripple</a>
         </div>
