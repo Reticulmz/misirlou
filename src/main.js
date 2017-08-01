@@ -4,6 +4,15 @@ import Vue from "vue"
 import App from "./App"
 import router from "./router"
 import timeago from "vue-timeago"
+import Raven from "raven-js"
+import RavenVue from "raven-js/plugins/vue"
+
+if (process.env.SENTRY_URL !== "") {
+  Raven
+    .config(process.env.SENTRY_URL)
+    .addPlugin(RavenVue, Vue)
+    .install()
+}
 
 Vue.use(timeago, {
   name: "timeago",

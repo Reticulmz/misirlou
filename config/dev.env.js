@@ -4,5 +4,6 @@ var prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV:     '"development"',
   API_BASE_URL: '"http://localhost:12331/api"',
-  APP_TITLE:    '"Misirlou"'
+  APP_TITLE:    '"Misirlou"',
+  SENTRY_URL: '""',
 })

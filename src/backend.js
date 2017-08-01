@@ -1,6 +1,7 @@
 import axios from "axios"
 import storage from "./storageHandler"
 import xxhashjs from "xxhashjs"
+import Raven from "raven-js"
 
 const rippleBaseURL = "https://api.ripple.moe/api/v1"
 const misirlouBaseURL = process.env.API_BASE_URL
@@ -61,11 +62,14 @@ function request(req, callback, handleableErrors) {
     return
   }*/
   axios(req)
-    .then((resp) => {
+    .then(resp => {
       //cache(req.url, req.params, resp.data)
       callback(resp.data, resp)
     })
-    .catch((err) => {
+    .catch(err => {
+      if (process.env.SENTRY_URL !== "") {
+        Raven.captureException(err)
+      }
       console.error(err)
     })
 }
