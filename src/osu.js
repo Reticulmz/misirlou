@@ -10,5 +10,35 @@ export default {
     "taiko",
     "ctb",
     "mania"
+  ],
+  beatmapCategories: [
+    [
+      "NoMod",
+      "Hidden",
+      "HardRock",
+      "DoubleTime",
+      "FreeMod",
+      "Tiebreaker",
+    ],
+    [
+      "NoMod",
+      "Hidden",
+      "HardRock",
+      "DoubleTime",
+      "FreeMod",
+      "Tiebreaker",
+    ],
+    [
+      "NoMod",
+      "Hidden",
+      "HardRock",
+      "DoubleTime",
+      "Tiebreaker",
+    ],
+    [
+      "NoMod",
+      "FreeMod",
+      "Tiebreaker",
+    ],
   ]
 }

@@ -14,7 +14,7 @@ export default {
       request(createMisirlouRequest("/tournaments/rules", {id: id}), callback)
     },
     register(data, callback, handleableErrors) {
-      var req = createMisirlouRequest("/tournaments/register", {})
+      let req = createMisirlouRequest("/tournaments/register", {})
       req.method = "POST"
       req.data = data
       request(req, callback, handleableErrors)
@@ -27,6 +27,15 @@ export default {
     },
     feedItems(tourn, callback) {
       request(createMisirlouRequest("/feed/items", {tourn_id: tourn}), callback)
+    },
+    beatmapRequests(tourn, callback) {
+      request(createMisirlouRequest("/beatmaps/my_requests", {tourn_id: tourn}), callback)
+    },
+    sendBeatmapRequests(tourn, requests, callback) {
+      let req = createMisirlouRequest("/beatmaps/request", {tourn_id: tourn})
+      req.method = "POST"
+      req.data = requests
+      request(req, callback)
     },
   },
   getUser(userID, callback) {
@@ -49,7 +58,7 @@ function request(req, callback, handleableErrors) {
   /*var cachedResp = cache(req.url, req.params)
   if (cachedResp) {
     callback(cachedResp)
-    return;
+    return
   }*/
   axios(req)
     .then((resp) => {

@@ -4,6 +4,7 @@ import Home from "@/components/Home"
 import Register from "@/components/Register"
 import Invites from "@/components/Invites"
 import Feed from "@/components/Feed"
+import Beatmaps from "@/components/Beatmaps"
 import Logout from "@/components/Logout"
 
 Vue.use(Router)
@@ -49,6 +50,14 @@ export default new Router({
       component: Logout,
       meta: {
         title: "Log out"
+      }
+    },
+    {
+      path: "/beatmaps/:id",
+      name: "RequestBeatmap",
+      component: Beatmaps,
+      meta: {
+        title: "Request a Beatmap"
       }
     },
   ]

@@ -96,7 +96,7 @@ export default {
     showRules() {
       this.modalActive = true
       if (this.rules != null)
-        return;
+        return
       this.rules = "<i>Loading...</i>"
       backend.misirlou.rules(this.tournament.id, rules => {
         if (!rules.rules) {

@@ -31,7 +31,7 @@
           <router-link class="column" :to="'/register/' + tournament.id">
             Register
           </router-link>
-          <router-link class="column" :to="'/beatmaps/' + tournament.id">
+          <router-link class="column" :to="'/beatmaps/' + tournament.id" v-if="tournament.max_beatmap_requests > 0">
             Request beatmaps
           </router-link>
           <router-link class="column" :to="'/teams/' + tournament.my_team" v-if="tournament.my_team">

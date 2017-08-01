@@ -118,7 +118,7 @@ export default {
       this.teamInformation.members[ru.number-1] = ru.typedUser && ru.typedUser != 404 ? ru.typedUser.id : 0
     },
     formSubmit() {
-      const members = membersBase(this.teamInformation.members, this.rippleUser.id);
+      const members = membersBase(this.teamInformation.members, this.rippleUser.id)
       if ((members.length+1) < this.tournament.min_team_size) {
         this.submitError("There are fewer team members than the minimum (" + this.tournament.min_team_size + ", including you)")
         return
@@ -172,7 +172,7 @@ export default {
 function membersBase(members, userID) {
   // Who would have thought I'd one day like ES6?
   // Removes duplicates from members.
-  const uniq = [...new Set(members)];
+  const uniq = [...new Set(members)]
 
   return uniq.filter(x => x > 0 && x !== userID)
 }
