@@ -22,7 +22,8 @@
               <div class="media-content">
                 <p>
                   <b v-if="names[invite.captain]">{{ names[invite.captain] }}</b><b v-else>...</b>
-                  has invited you to join his team: <b>{{ invite.name }}</b><br>
+                  has invited you to join his team:
+                  <router-link :to="'/teams/' + invite.id"><b>{{ invite.name }}</b></router-link><br>
                   The team will play in
                   <b><router-link :to="'/feed/' + invite.tournament.id">{{ invite.tournament.name }}</router-link></b>
                   ({{ osu.modesReadable[invite.tournament.mode] }})

@@ -14,6 +14,9 @@ export default {
     rules(id, callback) {
       request(createMisirlouRequest("/tournaments/rules", {id: id}), callback)
     },
+    team(id, callback, handleableErrors) {
+      request(createMisirlouRequest("/teams/team", {id: id}), callback, handleableErrors)
+    },
     register(data, callback, handleableErrors) {
       let req = createMisirlouRequest("/tournaments/register", {})
       req.method = "POST"
