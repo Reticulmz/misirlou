@@ -50,7 +50,7 @@ export default {
   },
   getUsersBulk(users, callback) {
     let path = "/users?"
-    users.forEach(x => path += "iid=" + x + "&")
+    users.forEach(x => path += "ids=" + x + "&")
     request(createRippleRequest(path, {}), callback)
   },
 }
