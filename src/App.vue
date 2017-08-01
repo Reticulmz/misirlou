@@ -46,7 +46,7 @@ var App = {
   mounted() {
     if (window.location.pathname === "/store_tokens") {
       storeTokens()
-      window.location.pathname = "/"
+      window.location.href = "/"
     }
     if (App.computed.isLoggedIn()) {
       backend.getUser("self", user => {
