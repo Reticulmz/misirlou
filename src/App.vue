@@ -9,7 +9,7 @@
         <div class="container has-text-centered">
           <a
             class="button is-large is-primary"
-            :href="process.env.API_BASE_URL + '/api/oauth_flow_start'"
+            :href="baseApiURL + '/api/oauth_flow_start'"
             :class="{ 'is-loading': buttonLoading }"
             @click="buttonLoading = true">Log in with Ripple</a>
         </div>
@@ -36,6 +36,7 @@ var App = {
   data() {
     return {
       buttonLoading: false,
+      baseApiURL: process.env.API_BASE_URL,
     }
   },
   computed: {
