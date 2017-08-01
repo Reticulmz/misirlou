@@ -31,7 +31,7 @@
             <footer class="card-footer">
               <a class="card-footer-item" @click="showRules">Rules</a>
               <router-link :to="'/register/' + tournament.id" class="card-footer-item">Register</router-link>
-              <router-link :to="'/beatmaps/' + tournament.id" class="card-footer-item">Beatmaps</router-link>
+              <router-link :to="'/beatmaps/' + tournament.id" class="card-footer-item" v-if="tournament.max_beatmap_requests > 0">Beatmaps</router-link>
             </footer>
           </div>
         </div>
