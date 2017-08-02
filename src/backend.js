@@ -17,6 +17,18 @@ export default {
     team(id, callback, handleableErrors) {
       request(createMisirlouRequest("/teams/team", {id: id}), callback, handleableErrors)
     },
+    renameTeam(id, newName, callback) {
+      request(createMisirlouRequest("/teams/rename", {team: id, name: newName}), callback)
+    },
+    disbandTeam(id, callback) {
+      request(createMisirlouRequest("/teams/disband", {team: id}), callback)
+    },
+    kickFromTeam(target, teamID, callback) {
+      request(createMisirlouRequest("/teams/kick", {target: target, team: teamID}), callback)
+    },
+    inviteToTeam(target, teamID, callback, handleableErrors) {
+      request(createMisirlouRequest("/teams/invite", {target: target, team: teamID}), callback, handleableErrors)
+    },
     register(data, callback, handleableErrors) {
       let req = createMisirlouRequest("/tournaments/register", {})
       req.method = "POST"
