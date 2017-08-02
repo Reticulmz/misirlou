@@ -159,12 +159,12 @@ export default {
       }
       this.tournament = tourn.tournaments[0]
       this.teamInformation.members = Array(this.tournament.team_size-1).fill(0)
-    })
-    backend.misirlou.rules(this.$route.params.id, rules => {
-      rules = rules.rules
-      if (rules === null)
-        return
-      this.rules = rules
+      backend.misirlou.rules(this.$route.params.id, rules => {
+        rules = rules.rules
+        if (rules === null)
+          return
+        this.rules = rules
+      })
     })
   }
 }
