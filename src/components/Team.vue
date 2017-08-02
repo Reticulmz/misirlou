@@ -197,7 +197,7 @@ export default {
       }
       this.team = team.team
       loadUsernames(team.team.members, i => i.user, this)
-    }, [404, 403])
+    }, [404, 403, 422]) // 422 is returned in the case of /teams/0
   },
 }
 </script>
