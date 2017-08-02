@@ -57,7 +57,7 @@ export default {
 
 function request(req, callback, handleableErrors) {
   if (handleableErrors)
-    req.validateStatus = s => (s >= 200 && s < 300) || handleableErrors.includes(s)
+    req.validateStatus = s => (s >= 200 && s < 300) || handleableErrors.indexOf(s) !== -1
 
   /*var cachedResp = cache(req.url, req.params)
   if (cachedResp) {
