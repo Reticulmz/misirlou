@@ -20,6 +20,8 @@
           Please remember to place only <strong>beatmap links</strong>, not
           beatmap sets links. This means you should only write links starting
           with "https://osu.ppy.sh/b/", not "https://osu.ppy.sh/s/".<br>
+          We also allow links starting with "https://ripple.moe/b/", so that you
+          can get the beatmaps from osu! quite easily.<br>
           You can suggest up to <b>{{ tournament.max_beatmap_requests }} beatmaps.</b>
         </p>
         <br>
@@ -78,7 +80,7 @@ function responseHandler(component) {
 // using the same regexp object to do .test and .match is not deterministic
 // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test#Description
 function getBeatmapRegex() {
-  return /^https?:\/\/osu\.ppy\.sh\/b\/(\d+)$/g
+  return /^https?:\/\/(?:osu\.ppy\.sh|ripple\.moe)\/b\/(\d+)$/g
 }
 
 export default {
