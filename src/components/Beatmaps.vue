@@ -41,8 +41,8 @@
           <br>
           <div class="field is-grouped is-grouped-right">
             <p class="control">
-              <button class="button is-primary" type="submit" :class="{ 'is-loading': isLoading }">
-                Save
+              <button class="button is-primary" type="submit" :class="{ 'is-loading': isLoading, 'is-success': isSuccess }">
+                <span v-if="isSuccess">Saved!</span><span v-else>Save</span>
               </button>
             </p>
           </div>
@@ -67,13 +67,19 @@ function createNewLastElement(component) {
   }
 }
 
-function responseHandler(component) {
+function responseHandler(component, saving) {
   return requests => {
     requests.requests.forEach((v, k) => {
       requests.requests[k].beatmap = "https://osu.ppy.sh/b/" + v.beatmap
     })
     component.requests = requests.requests
     component.isLoading = false
+    if (saving) {
+      component.isSuccess = true
+      setTimeout(() => {
+        component.isSuccess = false
+      }, 2500)
+    }
   }
 }
 
@@ -94,6 +100,7 @@ export default {
       tournament: null,
       requests: [],
       isLoading: false,
+      isSuccess: false,
     }
   },
   watch: {
@@ -107,6 +114,7 @@ export default {
     },
     onSubmit() {
       this.isLoading = true
+      this.isSuccess = false
       let requests = []
       this.requests.forEach(req => {
         const id = getBeatmapRegex().exec(req.beatmap)
@@ -117,7 +125,7 @@ export default {
           category: +req.category,
         })
       })
-      backend.misirlou.sendBeatmapRequests(this.tournament.id, requests, responseHandler(this))
+      backend.misirlou.sendBeatmapRequests(this.tournament.id, requests, responseHandler(this, true))
     },
     isBeatmapLinkDanger(value) {
       if (value === "")
