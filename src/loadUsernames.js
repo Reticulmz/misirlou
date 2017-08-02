@@ -4,8 +4,8 @@ export default function(baseArr, idRetrieverFunc, component) {
   let users = new Set()
   baseArr.forEach(i => users.add(idRetrieverFunc(i)))
   backend.getUsersBulk([...users], data => {
-    data.users.forEach(x => component.names[x.id] = x.username)
-    // I dunno why I need to do this, but apparently I do.
-    component.$forceUpdate()
+    // int + "" is a clever way to convert to string
+    // why we need component.$set: https://vuejs.org/v2/guide/reactivity.html#Change-Detection-Caveats
+    data.users.forEach(x => component.$set(component.names, x.id + "", x.username))
   })
 }
