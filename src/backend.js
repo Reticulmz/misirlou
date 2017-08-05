@@ -54,6 +54,18 @@ export default {
       req.data = requests
       request(req, callback)
     },
+    createNewFeedPost(tourn, newPost, callback) {
+      let req = createMisirlouRequest("/feed/post", {})
+      req.method = "POST"
+      req.data = {
+        tournament: tourn,
+        content: newPost,
+      }
+      request(req, callback)
+    },
+    deleteFeedPost(id, callback) {
+      request(createMisirlouRequest("/feed/delete", {post_id: id}), callback)
+    },
     setFCMToken(token, callback) {
       request(createMisirlouRequest("/set_fcm_token", {fcm_token: token}), callback)
     },

@@ -36,24 +36,50 @@
           </div>
         </div>
         <div class="column is-three-quarters">
-          <article class="media" v-for="item in feedItems" :key="item.id">
-            <figure class="media-left" v-if="item.author">
-              <a class="image is-64x64" :href="'https://ripple.moe/u/' + item.author" target="_blank">
-                <img :src="'http://a.ripple.moe/' + item.author">
-              </a>
+          <article class="media box">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img :src="'https://a.ripple.moe/' + (rippleUser ? rippleUser.id : 0)">
+              </p>
             </figure>
             <div class="media-content">
-              <div v-if="item.author">
-                <b v-if="names[item.author]">{{ names[item.author] }}</b><b v-else>...</b>
-                posted:
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea" placeholder="Create a new post (you can use markdown)..." v-model="newPost"></textarea>
+                </p>
               </div>
-              <div class="content" v-html="marked(item.content)">
-              </div>
-            </div>
-            <div class="media-right">
-              <timeago :since="item.created_at"></timeago>
+              <nav class="level">
+                <div class="level-left">
+                  <div class="level-item">
+                    <a class="button is-primary" @click="createNewPost" :class="{ 'is-loading': isCreatingPost }" :disabled="newPost.length === 0">Create</a>
+                  </div>
+                </div>
+              </nav>
             </div>
           </article>
+          <div class="boxes">
+            <div class="box">
+              <article class="media" v-for="item in feedItems" :key="item.id">
+                <figure class="media-left" v-if="item.author">
+                  <a class="image is-64x64" :href="'https://ripple.moe/u/' + item.author" target="_blank">
+                    <img :src="'http://a.ripple.moe/' + item.author">
+                  </a>
+                  <p class="has-text-right" style="margin-top: 5px" v-if="canPost"><a class="delete" @click="deletePost(item.id)"></a></p>
+                </figure>
+                <div class="media-content">
+                  <div v-if="item.author">
+                    <b v-if="names[item.author]">{{ names[item.author] }}</b><b v-else>...</b>
+                    posted:
+                  </div>
+                  <div class="content" v-html="marked(item.content)">
+                  </div>
+                </div>
+                <div class="media-right">
+                  <timeago :since="item.created_at"></timeago>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -74,6 +100,7 @@ import backend from "../backend"
 import marked from "marked"
 import osu from "../osu"
 import loadUsernames from "../loadUsernames"
+import store from "../store"
 
 export default {
   components: {
@@ -86,10 +113,13 @@ export default {
         description: "If this takes a long time, it means there's either been an error or your connection sucks.",
       },
       feedItems: [],
+      canPost: false,
       rules: null,
       modalActive: false,
       modesReadable: osu.modesReadable,
       names: {},
+      newPost: "",
+      isCreatingPost: false,
     }
   },
   methods: {
@@ -107,6 +137,29 @@ export default {
       })
     },
     marked: marked,
+    createNewPost() {
+      if (this.newPost.length === 0)
+        return
+      this.isCreatingPost = true
+      backend.misirlou.createNewFeedPost(this.tournament.id, this.newPost, newPost => {
+        this.newPost = ""
+        this.isCreatingPost = false
+        this.feedItems.unshift(newPost.item)
+        this.names[this.rippleUser.id] = this.rippleUser.username
+      })
+    },
+    deletePost(id) {
+      backend.misirlou.deleteFeedPost(id, deleted => {
+        var deletedIndex
+        this.feedItems.forEach((item, idx) => deletedIndex = item.id == id ? idx : deletedIndex)
+        this.feedItems.splice(deletedIndex, 1)
+      })
+    },
+  },
+  computed: {
+    rippleUser() {
+      return store.state.rippleUser
+    },
   },
   mounted() {
     backend.misirlou.tournaments(this.$route.params.id, tourn => {
@@ -120,12 +173,11 @@ export default {
     })
     backend.misirlou.feedItems(this.$route.params.id, items => {
       this.feedItems = items.items
+      this.canPost = items.can_post
       loadUsernames(items.items, i => i.author, this)
     })
   },
 }
 </script>
 
-<style>
-
-</style>
+<style src="../assets/boxes.css"></style>

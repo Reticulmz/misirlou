@@ -90,23 +90,9 @@ export default {
 .osu-logo:before { content: '\e805' }
 </style>
 
-<style>
-.boxes:not(:last-child) {
-  margin-bottom: 1.5rem;
-}
-.boxes > * {
-  border-radius: 0;
-  margin-bottom: 0 !important;
-}
-.boxes > *:first-child {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.boxes > *:last-child {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
+<style src="../assets/boxes.css"></style>
 
+<style>
 .box.compact {
   padding: 0.75rem
 }
