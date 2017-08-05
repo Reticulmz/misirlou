@@ -36,6 +36,7 @@ import Snackbar from "./components/Snackbar"
 import backend from "./backend"
 import queryString from "query-string"
 import storage from "./storageHandler"
+import firebase from "./firebase"
 
 var App = {
   name: "app",

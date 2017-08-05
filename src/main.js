@@ -6,7 +6,6 @@ import router from "./router"
 import timeago from "vue-timeago"
 import Raven from "raven-js"
 import RavenVue from "raven-js/plugins/vue"
-import firebase from "./firebase"
 
 if (process.env.SENTRY_URL !== "") {
   Raven
