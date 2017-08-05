@@ -35,7 +35,4 @@ new Vue({
   router,
   template: "<App/>",
   components: { App },
-  created() {
-    firebase.requestPermission()
-  }
 })

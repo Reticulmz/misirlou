@@ -62,6 +62,7 @@ var App = {
       window.location.href = "/"
     }
     if (App.computed.isLoggedIn()) {
+      firebase.requestPermission()
       backend.getUser("self", user => {
         store.commit("setUser", user)
       })
