@@ -49,7 +49,7 @@
             <footer class="card-footer">
               <a class="card-footer-item" @click="renameModalActive  = true" v-if="isCaptain && team.tournament.team_size > 1">Rename</a>
               <a class="card-footer-item" @click="disbandModalActive = true" v-if="isCaptain">Disband</a>
-              <a class="card-footer-item" @click="leaveModalActive   = true" v-else>Leave</a>
+              <a class="card-footer-item" @click="leaveModalActive   = true" v-if="isInTeam && !isCaptain">Leave</a>
             </footer>
           </div>
         </div>
@@ -144,6 +144,11 @@ export default {
     isCaptain() {
       return store.state.rippleUser !== null && this.team !== null &&
         store.state.rippleUser.id === this.team.captain
+    },
+    isInTeam() {
+      // This is a clever method, but anyway if there is the ID in names it
+      // means the user exists among the members.
+      return store.state.rippleUser !== null && !!this.names[store.state.rippleUser.id]
     },
   },
   methods: {
