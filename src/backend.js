@@ -2,6 +2,7 @@ import axios from "axios"
 import storage from "./storageHandler"
 import xxhashjs from "xxhashjs"
 import Raven from "raven-js"
+import store from "./store"
 
 const rippleBaseURL = "https://api.ripple.moe/api/v1"
 const misirlouBaseURL = process.env.API_BASE_URL
@@ -53,6 +54,9 @@ export default {
       req.data = requests
       request(req, callback)
     },
+    setFCMToken(token, callback) {
+      request(createMisirlouRequest("/set_fcm_token", {fcm_token: token}), callback)
+    },
   },
   getUser(userID, callback) {
     request(createRippleRequest("/users", {id: userID}), callback)
@@ -86,6 +90,7 @@ function request(req, callback, handleableErrors) {
         Raven.captureException(err)
       }
       console.error(err)
+      store.commit("snackbarNotification", "An error occurred while contacting the API, and we have been informed of this. Perhaps try refreshing the page?")
     })
 }
 

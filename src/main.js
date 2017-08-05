@@ -6,6 +6,7 @@ import router from "./router"
 import timeago from "vue-timeago"
 import Raven from "raven-js"
 import RavenVue from "raven-js/plugins/vue"
+import firebase from "./firebase"
 
 if (process.env.SENTRY_URL !== "") {
   Raven
@@ -19,7 +20,7 @@ Vue.use(timeago, {
   locale: "en-US",
   locales: {
     "en-US": require("vue-timeago/locales/en-US.json")
-  }
+  },
 })
 
 Vue.config.productionTip = false
@@ -33,5 +34,8 @@ new Vue({
   el: "#app",
   router,
   template: "<App/>",
-  components: { App }
+  components: { App },
+  created() {
+    firebase.requestPermission()
+  }
 })

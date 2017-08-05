@@ -25,6 +25,14 @@
         </router-link>
       </div>
       <div class="navbar-end">
+        <!--<a class="navbar-item has-dropdown" @click="bellClick" :class="{ 'is-active': bellActive }">
+          <div class="navbar-link no-arrow">
+            <img src="../assets/bell.svg" alt="Notifications" class="notif-bell">
+          </div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item">Don't blame yourself</a>
+          </div>
+        </a>-->
         <div
           class="navbar-item has-dropdown"
           :class="{ 'is-loading': !user, 'is-hoverable': !!user }">
@@ -52,6 +60,7 @@ export default {
     return {
       appTitle: process.env.APP_TITLE,
       burgerActive: false,
+      bellActive: false,
       locations: [
         {
           title: "Invites",
@@ -69,19 +78,40 @@ export default {
       ]
     }
   },
+  methods: {
+    bellClick() {
+      this.bellActive = !this.bellActive
+    },
+  },
   computed: {
     user() {
       return store.state.rippleUser
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
-.avatar {
+.avatar, .notif-bell {
   height: 2.5rem;
   width: auto;
+}
+
+.navbar-link.no-arrow::after {
+  border: 0;
+}
+.navbar-link.no-arrow {
+  padding-right: 1rem;
+}
+
+.avatar {
   border-radius: 50%;
   margin-right: 0.625rem;
+}
+
+/* TODO: once bulma 0.5.1 comes out, yarn upgrade and remove this */
+.navbar-dropdown.is-right {
+  left: auto;
+  right: 0;
 }
 </style>

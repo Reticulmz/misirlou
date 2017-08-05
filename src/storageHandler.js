@@ -9,7 +9,14 @@ export default {
     localStorage.setItem("session_token", session)
     localStorage.setItem("access_token", access)
   },
-  clear() {
-    localStorage.clear()
-  }
+  logout() {
+    localStorage.removeItem("session_token")
+    localStorage.removeItem("access_token")
+  },
+  lastFCMToken() {
+    return localStorage.getItem("fcm_token")
+  },
+  setFCMToken(token) {
+      localStorage.setItem("fcm_token", token)
+  },
 }

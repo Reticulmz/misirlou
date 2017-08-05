@@ -5,12 +5,16 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    rippleUser: null
+    rippleUser: null,
+    snackbarMessage: null,
   },
   mutations: {
     setUser(state, user) {
       state.rippleUser = user
-    }
+    },
+    snackbarNotification(state, notif) {
+      state.snackbarMessage = notif
+    },
   }
 })
 

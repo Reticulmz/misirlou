@@ -3,6 +3,10 @@
     <div v-if="isLoggedIn">
       <navbar></navbar>
       <router-view></router-view>
+      <p class="has-text-centered">
+        <small @click="licenseModalActive = true"><a>Licenses</a></small>
+      </p>
+      <br>
     </div>
     <section class="hero is-info is-fullheight" v-else>
       <div class="hero-body">
@@ -11,10 +15,13 @@
             class="button is-large is-primary"
             :href="baseApiURL + '/oauth_flow_start'"
             :class="{ 'is-loading': buttonLoading }"
-            @click="buttonLoading = true">Log in with Ripple</a>
+            @click="buttonLoading = true">Log in with Ripple</a><br>
+          <small @click="licenseModalActive = true"><a>Licenses</a></small>
         </div>
       </div>
     </section>
+    <snackbar></snackbar>
+    <license-modal v-model="licenseModalActive"></license-modal>
   </div>
 </template>
 
@@ -23,6 +30,8 @@ import router from "./router"
 import store from "./store"
 
 import Navbar from "./components/Navbar"
+import LicenseModal from "./components/LicenseModal"
+import Snackbar from "./components/Snackbar"
 
 import backend from "./backend"
 import queryString from "query-string"
@@ -31,12 +40,15 @@ import storage from "./storageHandler"
 var App = {
   name: "app",
   components: {
-    Navbar
+    Navbar,
+    LicenseModal,
+    Snackbar,
   },
   data() {
     return {
       buttonLoading: false,
       baseApiURL: process.env.API_BASE_URL,
+      licenseModalActive: false,
     }
   },
   computed: {

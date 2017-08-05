@@ -3,7 +3,7 @@ import storage from "../storageHandler"
 
 export default {
   mounted() {
-    storage.clear()
+    storage.logout()
     window.location.pathname = "/"
   }
 }
