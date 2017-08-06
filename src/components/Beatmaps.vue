@@ -10,8 +10,8 @@
         <h1 class="title">That tournament could not be found!</h1>
         <h2 class="subtitle">Have you checked in the cupboard?</h2>
       </div>
-      <div v-else-if="tournament.max_beatmap_requests < 1">
-        <h1 class="title">This tournament does not allow beatmap requests.</h1>
+      <div v-else-if="tournament.max_beatmap_requests < 1 || tournament.status > 2">
+        <h1 class="title">This tournament does not allow beatmap requests at the moment.</h1>
         <h2 class="subtitle">Sorry about that!</h2>
       </div>
       <div v-else class="box">

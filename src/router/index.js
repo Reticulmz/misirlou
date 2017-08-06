@@ -4,6 +4,7 @@ import Home from "@/components/Home"
 import Register from "@/components/Register"
 import Invites from "@/components/Invites"
 import Feed from "@/components/Feed"
+import TeamList from "@/components/TeamList"
 import Beatmaps from "@/components/Beatmaps"
 import Team from "@/components/Team"
 import Logout from "@/components/Logout"
@@ -35,6 +36,14 @@ export default new Router({
       component: Feed,
       meta: {
         title: "Feed"
+      }
+    },
+    {
+      path: "/feed/:id/teams",
+      name: "TeamList",
+      component: TeamList,
+      meta: {
+        title: "Teams playing"
       }
     },
     {

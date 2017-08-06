@@ -28,10 +28,10 @@
           <router-link class="column" :to="'/feed/' + tournament.id">
             Feed
           </router-link>
-          <router-link class="column" :to="'/register/' + tournament.id">
+          <router-link class="column" :to="'/register/' + tournament.id" v-if="tournament.status == 1">
             Register
           </router-link>
-          <router-link class="column" :to="'/beatmaps/' + tournament.id" v-if="tournament.max_beatmap_requests > 0">
+          <router-link class="column" :to="'/beatmaps/' + tournament.id" v-if="tournament.max_beatmap_requests > 0 && tournament.status <= 2">
             Request beatmaps
           </router-link>
           <router-link class="column" :to="'/teams/' + tournament.my_team" v-if="tournament.my_team">

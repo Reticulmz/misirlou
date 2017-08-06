@@ -26,6 +26,7 @@
                     {{ tournament.my_team_name }}.
                   </router-link></strong>
                 </div>
+                <router-link :to="'/feed/' + tournament.id + '/teams'"><b>View all teams</b></router-link>
               </div>
             </div>
             <footer class="card-footer">

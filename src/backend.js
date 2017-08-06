@@ -12,6 +12,9 @@ export default {
     tournaments(id, callback) {
       request(createMisirlouRequest("/tournaments", {id: id}), callback)
     },
+    teams(tournID, callback) {
+      request(createMisirlouRequest("/teams", {tourn_id: tournID}), callback)
+    },
     rules(id, callback) {
       request(createMisirlouRequest("/tournaments/rules", {id: id}), callback)
     },
