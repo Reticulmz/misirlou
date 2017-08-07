@@ -47,9 +47,9 @@
               </div>
             </div>
             <footer class="card-footer">
-              <a class="card-footer-item" @click="renameModalActive  = true" v-if="isCaptain && team.tournament.team_size > 1">Rename</a>
-              <a class="card-footer-item" @click="disbandModalActive = true" v-if="isCaptain && team.tournament.status > 1">Disband</a>
-              <a class="card-footer-item" @click="leaveModalActive   = true" v-if="isInTeam && !isCaptain">Leave</a>
+              <a class="card-footer-item" @click="renameModalActive  = true" v-if="isCaptain && team.tournament.team_size > 1 && team.tournament.status < 2">Rename</a>
+              <a class="card-footer-item" @click="disbandModalActive = true" v-if="isCaptain && team.tournament.status > 1 && team.tournament.status < 2">Disband</a>
+              <a class="card-footer-item" @click="leaveModalActive   = true" v-if="isInTeam && !isCaptain && team.tournament.status < 2">Leave</a>
             </footer>
           </div>
         </div>
