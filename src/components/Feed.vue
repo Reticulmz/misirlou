@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="column is-three-quarters">
-          <article class="media box">
+          <article class="media box" v-if="canPost">
             <figure class="media-left">
               <p class="image is-64x64">
                 <img :src="'https://a.ripple.moe/' + (rippleUser ? rippleUser.id : 0)">
