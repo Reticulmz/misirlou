@@ -2,7 +2,7 @@
   <div>
     <bulma-hero
       :title="team ? (team.id ? team.name : 'Not found') : 'Loading...'"
-      :subtitle="'A team of wonderful people competing in ' + (team && team.id ? team.tournament.name : 'a tournament')">
+      :subtitle="(team.tournament.team_size === 1 ? 'A wonderful person' : 'A team of wonderful people') + ' competing in ' + (team && team.id ? team.tournament.name : 'a tournament')">
     </bulma-hero>
     <loading-sect v-if="team === null"></loading-sect>
     <section class="section" v-else-if="team == 404">
