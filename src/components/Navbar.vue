@@ -25,14 +25,6 @@
         </router-link>
       </div>
       <div class="navbar-end">
-        <!--<a class="navbar-item has-dropdown" @click="bellClick" :class="{ 'is-active': bellActive }">
-          <div class="navbar-link no-arrow">
-            <img src="../assets/bell.svg" alt="Notifications" class="notif-bell">
-          </div>
-          <div class="navbar-dropdown is-right">
-            <a class="navbar-item">Don't blame yourself</a>
-          </div>
-        </a>-->
         <div
           class="navbar-item has-dropdown"
           :class="{ 'is-loading': !user, 'is-hoverable': !!user }">
@@ -107,11 +99,5 @@ export default {
 .avatar {
   border-radius: 50%;
   margin-right: 0.625rem;
-}
-
-/* TODO: once bulma 0.5.1 comes out, yarn upgrade and remove this */
-.navbar-dropdown.is-right {
-  left: auto;
-  right: 0;
 }
 </style>
