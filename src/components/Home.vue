@@ -21,7 +21,7 @@
           :href="'https://twitch.tv/' + tournament.status_data.twitch">
           This tournament is live! Click here to watch the live stream.
         </a>
-        <div class="columns is-gapless buttonful">
+        <div class="columns no-margins buttonful">
           <div class="column">
             <i class="osu-icon" :class="'mode-' + osu.modesShort[tournament.mode]"></i> {{ osu.modesReadable[tournament.mode] }}
           </div>
@@ -100,6 +100,12 @@ export default {
 .box.red {
   background: #d82502;
   color: #fff;
+}
+
+.no-margins {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
 }
 
 .buttonful.columns {
