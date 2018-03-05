@@ -43,13 +43,23 @@ export default {
   display: block;
   background: #444;
   max-width: 550px;
-  width: 100%;
   border-radius: 3px;
   -webkit-box-shadow: 0 2px 6px 0 #666666;
   box-shadow: 0 2px 6px 0 #666666;
   color: #EEE;
-  margin: 0 auto;
   line-height: 1.5;
   padding: 1rem;
+}
+@media (max-width: 590px) {
+  .snackbar {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+  }
+}
+@media (min-width: 591px) {
+  .snackbar {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 </style>
