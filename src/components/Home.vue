@@ -15,12 +15,6 @@
           v-if="tournament.exclusivity_starts">
           Runs from {{ tournament.exclusivity_starts }} until (probably) {{ tournament.exclusivity_ends }} (YYYY/MM/DD).
         </div>
-        <a
-          class="compact box red has-text-centered"
-          v-if="tournament.status_data && tournament.status_data.twitch"
-          :href="'https://twitch.tv/' + tournament.status_data.twitch">
-          This tournament is live! Click here to watch the live stream.
-        </a>
         <div class="columns no-margins buttonful">
           <div class="column">
             <i class="osu-icon" :class="'mode-' + osu.modesShort[tournament.mode]"></i> {{ osu.modesReadable[tournament.mode] }}
