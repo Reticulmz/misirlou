@@ -48,15 +48,6 @@ export default {
     feedItems(tourn, callback) {
       request(createMisirlouRequest("/feed/items", {tourn_id: tourn}), callback)
     },
-    beatmapRequests(tourn, callback) {
-      request(createMisirlouRequest("/beatmaps/my_requests", {tourn_id: tourn}), callback)
-    },
-    sendBeatmapRequests(tourn, requests, callback) {
-      let req = createMisirlouRequest("/beatmaps/request", {tourn_id: tourn})
-      req.method = "POST"
-      req.data = requests
-      request(req, callback)
-    },
     createNewFeedPost(tourn, newPost, callback) {
       let req = createMisirlouRequest("/feed/post", {})
       req.method = "POST"

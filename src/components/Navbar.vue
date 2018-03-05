@@ -58,15 +58,6 @@ export default {
           title: "Invites",
           location: "/invites",
         },
-        /*
-        {
-          title: "Request Beatmap",
-          location: "/beatmaps"
-        },
-        {
-          title: "Brackets",
-          location: "/brackets"
-        }*/
       ]
     }
   },
